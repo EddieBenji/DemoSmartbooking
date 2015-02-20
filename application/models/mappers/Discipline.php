@@ -42,8 +42,10 @@ class Application_Model_Mapper_Discipline implements Application_Model_Mapper_Ab
     {
         // TODO: Implement update() method.
         $data = array("name"=>$obj->getName());
+
         $id = $this->disciplineDbTable->update($data, "id = ". $obj->getId());
         $obj->setId($id);
+
         return $obj;
     }
 
