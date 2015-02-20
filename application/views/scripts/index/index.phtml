@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba</title>
+</head>
+<body>
+<h1>HOLA MUNDO</h1>
+
+<?php //echo $this->escape($this->disciplines->getName()); ?>
+
+
+<?php foreach ($this->divisions as $entry): ?>
+
+
+    <?php echo $this->escape("División Id:".$entry->getId()); ?>
+    <?php echo $this->escape("División Nombre: ".$entry->getName()); ?>
+    <?php echo $this->escape("Disciplina ID:".$entry->getObjDiscipline()->getId()); ?>
+    <?php echo $this->escape("Disciplina Nombre:".$entry->getObjDiscipline()->getName()); ?>
+    <br/>
+
+
+
+<?php endforeach ?>
+
+
+</body>
+</html>
