@@ -42,6 +42,8 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
     }
 
     /**
+     * Es necesario que el objeto división tenga encapsulado el objeto disciplina
+     * al que está relacionado la divisón;
      * Update object
      * @param Application_Model_Abstract $obj
      * @return obj
@@ -77,8 +79,8 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
     public function findOneBy($id)
     {
         // TODO: Implement findOneBy() method.
-        $query = $this->getDivisionDbTable()->select()->from("division")->where("id = ?", $id);
-        $row = $this->getDivisionDbTable()->fetchRow($query)->toArray();
+        $query = $this->divisionDbTable->select()->from("division")->where("id = ?", $id);
+        $row = $this->divisionDbTable->fetchRow($query)->toArray();
 
         if ($row != null) {
             $objDivision = new Application_Model_Division();
@@ -108,8 +110,6 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
 
             $division = new Application_Model_Division();
             $division->createFromDbTable($row);
-            //$division->setId($row["id"]);
-            //$division->setName($row["name"]);
 
             $theDiscipline = $disciplineMapper->findOneBy($row["discipline_id"]);
             $division->setObjDiscipline($theDiscipline);

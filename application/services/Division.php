@@ -16,6 +16,26 @@ class Application_Service_Division
         $this->divisionMapper = new Application_Model_Mapper_Division();
     }
 
+    public function insert($obj)
+    {
+        return $this->divisionMapper->insert($obj);
+    }
+
+    public function update($obj)
+    {
+        return $this->divisionMapper->update($obj);
+    }
+
+    public function delete($obj)
+    {
+        $this->divisionMapper->delete($obj);
+    }
+
+    public function findOneBy($id)
+    {
+        return $this->divisionMapper->findOneBy($id);
+    }
+
     public function findAll()
     {
         return $this->divisionMapper->findAll();

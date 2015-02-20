@@ -10,13 +10,15 @@
 <?php //echo $this->escape($this->disciplines->getName()); ?>
 
 
-<?php foreach ($this->divisions as $entry): ?>
+<?php foreach ($this->properties as $entry): ?>
 
 
-    <?php echo $this->escape("División Id:".$entry->getId()); ?>
-    <?php echo $this->escape("División Nombre: ".$entry->getName()); ?>
-    <?php echo $this->escape("Disciplina ID:".$entry->getObjDiscipline()->getId()); ?>
-    <?php echo $this->escape("Disciplina Nombre:".$entry->getObjDiscipline()->getName()); ?>
+<!--    --><?php //echo $this->escape("División Id:".$entry->getId()); ?>
+<!--    --><?php //echo $this->escape("División Nombre: ".$entry->getName()); ?>
+<!--    --><?php //echo $this->escape("Disciplina ID:".$entry->getObjDiscipline()->getId()); ?>
+<!--    --><?php //echo $this->escape("Disciplina Nombre:".$entry->getObjDiscipline()->getName()); ?>
+    <?php echo $this->escape("Propiedad ID:".$entry->getId()); ?>
+    <?php echo $this->escape("Propiedad Nombre:".$entry->getName()); ?>
     <br/>
 
 
