@@ -15,7 +15,7 @@ class Application_Model_Mapper_Properties  implements Application_Model_Mapper_A
      */
     public function __construct()
     {
-        // TODO: Implement __construct() method.
+        // TODO: Implement __construct() method.s
         $this->propertiesDbTable = new Application_Model_DbTable_Properties();
     }
 

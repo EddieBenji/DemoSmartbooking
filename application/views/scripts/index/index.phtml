@@ -8,6 +8,17 @@
 <h1>HOLA MUNDO</h1>
 
 <?php //echo $this->escape($this->disciplines->getName()); ?>
+<?php echo $this->escape($this->assets->getId()); ?> <br/>
+<?php echo $this->escape($this->assets->getName()); ?><br/>
+<?php echo $this->escape($this->assets->getX()); ?><br/>
+<?php echo $this->escape($this->assets->getY()); ?><br/>
+<?php echo $this->escape($this->assets->getZ()); ?><br/>
+<br/>
+<?php echo $this->escape($this->assets->getObjDivision()->getId()); ?><br/>
+<?php echo $this->escape($this->assets->getObjDivision()->getName()); ?><br/>
+<br/>
+<?php echo $this->escape($this->assets->getObjDivision()->getObjDiscipline()->getId()); ?><br/>
+<?php echo $this->escape($this->assets->getObjDivision()->getObjDiscipline()->getName()); ?>
 
 
 <?php foreach ($this->places as $entry): ?>
@@ -19,11 +30,12 @@
 <!--    --><?php //echo $this->escape("Disciplina Nombre:".$entry->getObjDiscipline()->getName()); ?>
 <!--    --><?php //echo $this->escape("Propiedad ID:".$entry->getId()); ?>
 <!--    --><?php //echo $this->escape("Propiedad Nombre:".$entry->getName()); ?>
-
-    <?php echo $this->escape("Lugar ID:".$entry->getId()); ?>
-    <?php echo $this->escape("Nombre:".$entry->getName()); ?>
-    <?php echo $this->escape("Img:".$entry->getImg()); ?>
+<!---->
+<!--    --><?php //echo $this->escape("Lugar ID:".$entry->getId()); ?>
+<!--    --><?php //echo $this->escape("Nombre:".$entry->getName()); ?>
+<!--    --><?php //echo $this->escape("Img:".$entry->getImg()); ?>
     <br/>
+
 
 
 

@@ -1,17 +1,19 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: benji
  * Date: 20/02/15
  * Time: 08:31 AM
  */
-
-class Application_Model_Properties extends Application_Model_Abstract{
+class Application_Model_Properties extends Application_Model_Abstract
+{
 
 
     private $id;
     private $name;
     private $type;
+    private $required;
 
     /**
      * @param mixed $id
@@ -38,6 +40,14 @@ class Application_Model_Properties extends Application_Model_Abstract{
     }
 
     /**
+     * @param mixed $required
+     */
+    public function setRequired($required)
+    {
+        $this->required = $required;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -61,6 +71,13 @@ class Application_Model_Properties extends Application_Model_Abstract{
         return $this->type;
     }
 
+    /**
+     * @return mixed
+     */
+    public function isRequired()
+    {
+        return $this->required;
+    }
 
 
 }

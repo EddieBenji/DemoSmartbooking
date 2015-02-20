@@ -25,8 +25,11 @@ class IndexController extends Zend_Controller_Action
 //        $serviceProperties = new Application_Service_Properties();
 //        $this->view->properties=$serviceProperties->findAll();
 
-        $placeProperties = new Application_Service_Place();
-        $this->view->places=$placeProperties->findAll();
+//        $placeProperties = new Application_Service_Place();
+//        $this->view->places=$placeProperties->findAll();
+
+        $assetService = new Application_Service_Asset();
+        $this->view->assets = $assetService->findOneBy(1);
 
 
 

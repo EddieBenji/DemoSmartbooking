@@ -45,7 +45,7 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
      * Es necesario que el objeto división tenga encapsulado el objeto disciplina
      * al que está relacionado la divisón;
      * Update object
-     * @param Application_Model_Abstract $obj
+     * @param Application_Model_Division $obj
      * @return obj
      */
     public function update($obj)
@@ -63,18 +63,18 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
 
     /**
      * Delete object
-     * @param Application_Model_Abstract $obj
+     * @param Application_Model_Division $obj
      */
     public function delete($obj)
     {
         // TODO: Implement delete() method.
-        $this->divisionDbTable->delete("id=" . $obj->getId);
+        $this->divisionDbTable->delete("id=" . $obj->getId());
     }
 
     /**
      * Find one by
      * @param int $id
-     * @return Application_Model_Discipline
+     * @return Application_Model_Division
      */
     public function findOneBy($id)
     {
