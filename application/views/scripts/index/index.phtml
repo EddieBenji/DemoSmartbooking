@@ -8,22 +8,25 @@
 <h1>HOLA MUNDO</h1>
 
 <?php //echo $this->escape($this->disciplines->getName()); ?>
-<?php echo $this->escape($this->assets->getId()); ?> <br/>
-<?php echo $this->escape($this->assets->getName()); ?><br/>
-<?php echo $this->escape($this->assets->getX()); ?><br/>
-<?php echo $this->escape($this->assets->getY()); ?><br/>
-<?php echo $this->escape($this->assets->getZ()); ?><br/>
+<?php echo $this->escape("Activo ID:".$this->assets->getId()); ?> <br/>
+<?php echo $this->escape("Nombre: ".$this->assets->getName()); ?><br/>
+<?php echo $this->escape("X: ".$this->assets->getX()); ?><br/>
+<?php echo $this->escape("Y: ".$this->assets->getY()); ?><br/>
+<?php echo $this->escape("Z: ".$this->assets->getZ()); ?><br/>
 <br/>
-<?php echo $this->escape($this->assets->getObjDivision()->getId()); ?><br/>
-<?php echo $this->escape($this->assets->getObjDivision()->getName()); ?><br/>
+<?php echo $this->escape("División ID: ".$this->assets->getObjDivision()->getId()); ?><br/>
+<?php echo $this->escape("División Nombre ID: ".$this->assets->getObjDivision()->getName()); ?><br/>
 <br/>
-<?php echo $this->escape($this->assets->getObjDivision()->getObjDiscipline()->getId()); ?><br/>
-<?php echo $this->escape($this->assets->getObjDivision()->getObjDiscipline()->getName()); ?>
+<?php echo $this->escape("Disciplina ID: ".$this->assets->getObjDivision()->getObjDiscipline()->getId()); ?><br/>
+<?php echo $this->escape("Disciplina nombre: ".$this->assets->getObjDivision()->getObjDiscipline()->getName()); ?>
 
+<br/><br/>
+<?php foreach ($this->assets->getArrayProperties() as $entry):?>
 
-<?php foreach ($this->places as $entry): ?>
-
-
+    <?php echo $this->escape("Propiedades Id: ".$entry->getId()); ?>
+    <?php echo $this->escape("  ".$entry->getName()); ?>
+    <?php echo $this->escape(" ".$entry->getType()); ?>
+    <?php echo $this->escape(" ".$entry->isRequired()); ?>
 <!--    --><?php //echo $this->escape("División Id:".$entry->getId()); ?>
 <!--    --><?php //echo $this->escape("División Nombre: ".$entry->getName()); ?>
 <!--    --><?php //echo $this->escape("Disciplina ID:".$entry->getObjDiscipline()->getId()); ?>
@@ -35,8 +38,6 @@
 <!--    --><?php //echo $this->escape("Nombre:".$entry->getName()); ?>
 <!--    --><?php //echo $this->escape("Img:".$entry->getImg()); ?>
     <br/>
-
-
 
 
 <?php endforeach ?>

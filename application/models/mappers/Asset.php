@@ -98,6 +98,10 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             $objAsset->setObjPlace($objPlace);
 
             //FALTAN PROPIEDADES
+            $propertiesMapper = new Application_Model_Mapper_AssetHasProperties();
+
+            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+            $objAsset->setArrayProperties($arrayProps);
 
             return $objAsset;
         }

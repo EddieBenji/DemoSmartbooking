@@ -14,7 +14,7 @@ class Application_Model_Asset extends Application_Model_Abstract
     private $x, $y, $z;
     private $objDivision;
     private $objPlace;
-    private $arrayProperties = array();
+    private $arrayProperties;
 
     /**
      * @param int $id
