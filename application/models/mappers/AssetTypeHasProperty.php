@@ -6,7 +6,7 @@
  * Date: 20/02/15
  * Time: 10:55 AM
  */
-class Application_Model_Mapper_AssetHasProperties implements Application_Model_Mapper_Abstract
+class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model_Mapper_Abstract
 {
 
     private $assetHasPropertiesDbTable;
@@ -17,7 +17,7 @@ class Application_Model_Mapper_AssetHasProperties implements Application_Model_M
     public function __construct()
     {
         // TODO: Implement __construct() method.
-        $this->assetHasPropertiesDbTable = new Application_Model_DbTable_AssetHasProperties();
+        $this->assetHasPropertiesDbTable = new Application_Model_DbTable_AssetTypeHasProperty();
     }
 
     public function insert($obj)
@@ -55,16 +55,16 @@ class Application_Model_Mapper_AssetHasProperties implements Application_Model_M
     public function findPropertiesOfAnAssetById($id)
     {
 
-        $resultQuery = $this->assetHasPropertiesDbTable->select()->where("asset_id=?", $id)->setIntegrityCheck(false);
+        $resultQuery = $this->assetHasPropertiesDbTable->select()->where("asset_type_id=?", $id)->setIntegrityCheck(false);
         $rows = $this->assetHasPropertiesDbTable->fetchAll($resultQuery)->toArray();
         $propertiesOfAnAsset_array = array();
 
-        $propertiesMapper = new Application_Model_Mapper_Properties();
+        $propertiesMapper = new Application_Model_Mapper_Property();
         if ($rows != null) {
 
             foreach ($rows as $row) {
 
-                $a_property = $propertiesMapper->findOneBy($row["properties_id"]);
+                $a_property = $propertiesMapper->findOneBy($row["property_id"]);
                 $a_property->setRequired($row["required"]);
                 array_push($propertiesOfAnAsset_array, $a_property);
             }

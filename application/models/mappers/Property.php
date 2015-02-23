@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * Created by PhpStorm.
  * User: benji
@@ -6,7 +6,7 @@
  * Time: 08:16 AM
  */
 
-class Application_Model_Mapper_Properties  implements Application_Model_Mapper_Abstract{
+class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abstract{
 
     private $propertiesDbTable;
 
@@ -16,7 +16,7 @@ class Application_Model_Mapper_Properties  implements Application_Model_Mapper_A
     public function __construct()
     {
         // TODO: Implement __construct() method.s
-        $this->propertiesDbTable = new Application_Model_DbTable_Properties();
+        $this->propertiesDbTable = new Application_Model_DbTable_Property();
     }
 
     /**
@@ -61,7 +61,7 @@ class Application_Model_Mapper_Properties  implements Application_Model_Mapper_A
         $resultQuery = $this->propertiesDbTable->select()->where("id=?",$id);
         $row = $this->propertiesDbTable->fetchRow($resultQuery)->toArray();
 
-        $property = new Application_Model_Properties();
+        $property = new Application_Model_Property();
         $property->createFromDbTable($row);
 
         return $property;
@@ -77,7 +77,7 @@ class Application_Model_Mapper_Properties  implements Application_Model_Mapper_A
         $result = $this->propertiesDbTable->fetchAll()->toArray();
 
         foreach ($result as $row) {
-            $a_property = new Application_Model_Properties();
+            $a_property = new Application_Model_Property();
             $a_property->createFromDbTable($row);
 
             array_push($propertiesArray, $a_property);

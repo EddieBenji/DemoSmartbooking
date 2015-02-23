@@ -22,7 +22,7 @@ class IndexController extends Zend_Controller_Action
 //        $serviceDivision = new Application_Service_Division();
 //        $this->view->divisions = $serviceDivision->findAll();
 
-//        $serviceProperties = new Application_Service_Properties();
+//        $serviceProperties = new Application_Service_Property();
 //        $this->view->properties=$serviceProperties->findAll();
 
 //        $placeProperties = new Application_Service_Place();

@@ -27,10 +27,6 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             "name" => $obj->getName(),
             "division_id" => $obj->getObjDivision()->getId(),
             "division_discipline_id" => $obj->getObjDivision()->getObjDiscipline()->getId(),
-            "place_id"=>$obj->getObjPlace()->getId(),
-            "x"=>$obj->getX(),
-            "y"=>$obj->getY(),
-            "z"=>$obj->getZ()
         );
 
         $id = $this->assetDbTable->insert($data);
@@ -51,10 +47,6 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             "name" => $obj->getName(),
             "division_id" => $obj->getObjDivision()->getId(),
             "division_discipline_id" => $obj->getObjDivision()->getObjDiscipline()->getId(),
-            "place_id"=>$obj->getObjPlace()->getId(),
-            "x"=>$obj->getX(),
-            "y"=>$obj->getY(),
-            "z"=>$obj->getZ()
         );
 
         $id = $this->assetDbTable->update($data, "id = " . $obj->getId());
@@ -86,28 +78,24 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
         if ($row != null) {
             $objAsset = new Application_Model_Asset();
             $objAsset ->createFromDbTable($row);
-            //faltan los objetos de division, place y properties
+            //faltan los objetos de division y property
 
-            $disciplineMapper = new Application_Model_Mapper_Division();
-            $objDivision = $disciplineMapper->findOneBy($row["division_id"]);
+            $divisionMapper = new Application_Model_Mapper_Division();
+            $objDivision = $divisionMapper->findOneBy($row["division_id"]);
             $objAsset->setObjDivision($objDivision);
 
-            $placeMapper = new Application_Model_Mapper_Place();
-            $objPlace = $placeMapper->findOneBy($row["place_id"]);
+            //PROPIEDADES:
+            $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
 
-            $objAsset->setObjPlace($objPlace);
-
-            //FALTAN PROPIEDADES
-            $propertiesMapper = new Application_Model_Mapper_AssetHasProperties();
-
-            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById( $objAsset->getId() );
             $objAsset->setArrayProperties($arrayProps);
 
             return $objAsset;
         }
     }
 
-    /**
+
+     /**
      * Find all elements
      */
     public function findAll()
