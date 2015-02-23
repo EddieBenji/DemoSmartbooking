@@ -101,7 +101,7 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
      */
     public function findAll()
     {
-        // TODO: Implement findAll() method.
+        // TODO: Implement findAllAssets() method.
         $divisionArray = array();
         $result = $this->divisionDbTable->fetchAll()->toArray();
 

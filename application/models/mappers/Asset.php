@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: benji
  * Date: 20/02/15
  * Time: 09:37 AM
  */
-
-class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstract {
+class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstract
+{
 
     private $assetDbTable;
 
@@ -72,12 +73,12 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
     public function findOneBy($id)
     {
         // TODO: Implement findOneBy() method.
-        $resultQuery = $this->assetDbTable->select()->where("id=?",$id);
+        $resultQuery = $this->assetDbTable->select()->where("id=?", $id);
         $row = $this->assetDbTable->fetchRow($resultQuery)->toArray();
 
         if ($row != null) {
             $objAsset = new Application_Model_Asset();
-            $objAsset ->createFromDbTable($row);
+            $objAsset->createFromDbTable($row);
             //faltan los objetos de division y property
 
             $divisionMapper = new Application_Model_Mapper_Division();
@@ -87,21 +88,42 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             //PROPIEDADES:
             $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
 
-            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById( $objAsset->getId() );
+            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
             $objAsset->setArrayProperties($arrayProps);
 
             return $objAsset;
         }
     }
 
-
-     /**
+    /**
      * Find all elements
+     * @return array Application_Model_Asset
      */
     public function findAll()
     {
-        // TODO: Implement findAll() method.
+        // TODO: Implement findAllAssets() method.
+        $assetsArray = array();
+        $result = $this->assetDbTable->fetchAll()->toArray();
+
+        $divisionMapper = new Application_Model_Mapper_Division();
+        $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
+
+        if ($result != null) {
+            foreach ($result as $row) {
+                //ASSETS:
+                $objAsset = new Application_Model_Asset();
+                $objAsset->createFromDbTable($row);
+
+                //DIVISIONS:
+                $objDivision = $divisionMapper->findOneBy($row["division_id"]);
+                $objAsset->setObjDivision($objDivision);
+
+                //PROPERTIES:
+                $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+                $objAsset->setArrayProperties($arrayProps);
+                array_push($assetsArray, $objAsset);
+            }
+            return $assetsArray;
+        }
     }
-
-
 }

@@ -5,38 +5,34 @@
     <title>Prueba</title>
 </head>
 <body>
-<h1>HOLA MUNDO</h1>
+<!--<h1>HOLA MUNDO</h1>-->
 
-<?php //echo $this->escape($this->disciplines->getName()); ?>
-<?php echo $this->escape("Activo ID:".$this->assets->getId()); ?> <br/>
-<?php echo $this->escape("Nombre: ".$this->assets->getName()); ?><br/>
-<br/>
-<?php echo $this->escape("División ID: ".$this->assets->getObjDivision()->getId()); ?><br/>
-<?php echo $this->escape("División Nombre ID: ".$this->assets->getObjDivision()->getName()); ?><br/>
-<br/>
-<?php echo $this->escape("Disciplina ID: ".$this->assets->getObjDivision()->getObjDiscipline()->getId()); ?><br/>
-<?php echo $this->escape("Disciplina nombre: ".$this->assets->getObjDivision()->getObjDiscipline()->getName()); ?>
-
-<br/><br/>
-<?php foreach ($this->assets->getArrayProperties() as $entry):?>
-
-    <?php echo $this->escape("Propiedades Id: ".$entry->getId()); ?>
-    <?php echo $this->escape("  ".$entry->getName()); ?>
-    <?php echo $this->escape(" ".$entry->getType()); ?>
-    <?php echo $this->escape(" ".$entry->isRequired()); ?>
-<!--    --><?php //echo $this->escape("División Id:".$entry->getId()); ?>
-<!--    --><?php //echo $this->escape("División Nombre: ".$entry->getName()); ?>
-<!--    --><?php //echo $this->escape("Disciplina ID:".$entry->getObjDiscipline()->getId()); ?>
-<!--    --><?php //echo $this->escape("Disciplina Nombre:".$entry->getObjDiscipline()->getName()); ?>
-<!--    --><?php //echo $this->escape("Propiedad ID:".$entry->getId()); ?>
-<!--    --><?php //echo $this->escape("Propiedad Nombre:".$entry->getName()); ?>
-<!---->
-<!--    --><?php //echo $this->escape("Lugar ID:".$entry->getId()); ?>
-<!--    --><?php //echo $this->escape("Nombre:".$entry->getName()); ?>
-<!--    --><?php //echo $this->escape("Img:".$entry->getImg()); ?>
+<?php foreach ($this->assets as $eachAsset):?>
+    <h3>-------------Empieza un Asset-----------</h3>
+    <?php //echo $this->escape($this->disciplines->getName()); ?>
+    <?php echo $this->escape("Activo ID:".$eachAsset->getId()); ?> <br/>
+    <?php echo $this->escape("Nombre: ".$eachAsset->getName()); ?><br/>
     <br/>
+    <?php echo $this->escape("División ID: ".$eachAsset->getObjDivision()->getId()); ?><br/>
+    <?php echo $this->escape("División Nombre ID: ".$eachAsset->getObjDivision()->getName()); ?><br/>
+    <br/>
+    <?php echo $this->escape("Disciplina ID: ".$eachAsset->getObjDivision()->getObjDiscipline()->getId()); ?><br/>
+    <?php echo $this->escape("Disciplina nombre: ".$eachAsset->getObjDivision()->getObjDiscipline()->getName()); ?>
+
+    <br/><br/>
+
+    <?php foreach ($eachAsset->getArrayProperties() as $entry):?>
+
+        <?php echo $this->escape("Propiedades Id: ".$entry->getId()); ?>
+        <?php echo $this->escape("  ".$entry->getName()); ?>
+        <?php echo $this->escape(" ".$entry->getType()); ?>
+        <?php echo $this->escape(" ".$entry->isRequired()); ?>
+
+        <br/>
 
 
+    <?php endforeach ?>
+    <h3>-------------Termina un Asset-----------</h3>
 <?php endforeach ?>
 
 

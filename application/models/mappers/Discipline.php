@@ -78,7 +78,7 @@ class Application_Model_Mapper_Discipline implements Application_Model_Mapper_Ab
      */
     public function findAll()
     {
-        // TODO: Implement findAll() method.
+        // TODO: Implement findAllAssets() method.
         $disciplineArray = array();
         $result = $this->disciplineDbTable->fetchAll()->toArray();
         foreach ($result as $row) {

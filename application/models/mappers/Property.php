@@ -72,7 +72,7 @@ class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abs
      */
     public function findAll()
     {
-        // TODO: Implement findAll() method.
+        // TODO: Implement findAllAssets() method.
         $propertiesArray = array();
         $result = $this->propertiesDbTable->fetchAll()->toArray();
 

@@ -9,7 +9,7 @@
 class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model_Mapper_Abstract
 {
 
-    private $assetHasPropertiesDbTable;
+    private $assetTypeHasPropertyDbTable;
 
     /**
      * Default constructor
@@ -17,7 +17,7 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
     public function __construct()
     {
         // TODO: Implement __construct() method.
-        $this->assetHasPropertiesDbTable = new Application_Model_DbTable_AssetTypeHasProperty();
+        $this->assetTypeHasPropertyDbTable = new Application_Model_DbTable_AssetTypeHasProperty();
     }
 
     public function insert($obj)
@@ -55,8 +55,8 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
     public function findPropertiesOfAnAssetById($id)
     {
 
-        $resultQuery = $this->assetHasPropertiesDbTable->select()->where("asset_type_id=?", $id)->setIntegrityCheck(false);
-        $rows = $this->assetHasPropertiesDbTable->fetchAll($resultQuery)->toArray();
+        $resultQuery = $this->assetTypeHasPropertyDbTable->select()->where("asset_type_id=?", $id)->setIntegrityCheck(false);
+        $rows = $this->assetTypeHasPropertyDbTable->fetchAll($resultQuery)->toArray();
         $propertiesOfAnAsset_array = array();
 
         $propertiesMapper = new Application_Model_Mapper_Property();
@@ -75,6 +75,6 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
 
     public function findAll()
     {
-        // TODO: Implement findAll() method.
+        // TODO: Implement findAllAssets() method.
     }
 }
