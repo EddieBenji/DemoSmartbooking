@@ -26,7 +26,7 @@ class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abs
      */
     public function insert($obj)
     {
-        // TODO: Implement insert() method.
+        // TODO: Implement addAsset() method.
 
         $data = array("name"=>$obj->getName(), "type"=>$obj->getType());
 
@@ -39,7 +39,7 @@ class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abs
 
     public function update($obj)
     {
-        // TODO: Implement update() method.
+        // TODO: Implement updateInformationOfDiscipline() method.
         $data = array("name"=>$obj->getName(), "type"=>$obj->getType());
 
         $id = $this->propertiesDbTable->update($data, "id = ". $obj->getId());
@@ -50,13 +50,13 @@ class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abs
 
     public function delete($obj)
     {
-        // TODO: Implement delete() method.
+        // TODO: Implement removeDiscipline() method.
         $this->propertiesDbTable->delete("id = ".$obj->getId());
     }
 
     public function findOneBy($id)
     {
-        // TODO: Implement findOneBy() method.
+        // TODO: Implement findDisciplineById() method.
 
         $resultQuery = $this->propertiesDbTable->select()->where("id=?",$id);
         $row = $this->propertiesDbTable->fetchRow($resultQuery)->toArray();

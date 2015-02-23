@@ -14,7 +14,7 @@ class Application_Service_Asset
 
     public function __construct()
     {
-        $this->assetMapper = new Application_Model_Mapper_Asset();
+        $this->assetMapper = new Application_Model_Mapper_AssetType();
     }
 
 
@@ -25,7 +25,7 @@ class Application_Service_Asset
      * @param Application_Model_Asset $obj
      * @return Application_Model_Asset $obj
      */
-    public function insert($obj)
+    public function addAsset($obj)
     {
         return $this->assetMapper->insert($obj);
     }
@@ -42,7 +42,7 @@ class Application_Service_Asset
     /**
      * @param Application_Model_Asset $obj
      */
-    public function deleteAnAsset($obj){
+    public function removeAnAsset($obj){
         $this->assetMapper->delete($obj);
     }
 
@@ -62,5 +62,22 @@ class Application_Service_Asset
     public function findAllAssets()
     {
         return $this->assetMapper->findAll();
+    }
+
+    /**
+     * @param int $id
+     * @return array Application_Model_Asset
+     */
+    public function findAssetsByDivisionId($id){
+        return $this->assetMapper->findAssetsByDivisionId($id);
+    }
+
+    /**
+     * @param Application_Model_Division $obj
+     * @return array
+     */
+    public function findAssetsByDivision($obj){
+        return $this->assetMapper->findAssetsByDivisionId($obj->getId());
+
     }
 }

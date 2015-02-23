@@ -50,7 +50,7 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
      */
     public function update($obj)
     {
-        // TODO: Implement update() method.
+        // TODO: Implement updateInformationOfDiscipline() method.
         $data = array(
             "discipline_id" => $obj->getObjDiscipline()->getId(),
             "name" => $obj->getName()
@@ -67,7 +67,7 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
      */
     public function delete($obj)
     {
-        // TODO: Implement delete() method.
+        // TODO: Implement removeDiscipline() method.
         $this->divisionDbTable->delete("id=" . $obj->getId());
     }
 
@@ -78,7 +78,7 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
      */
     public function findOneBy($id)
     {
-        // TODO: Implement findOneBy() method.
+        // TODO: Implement findDisciplineById() method.
         $query = $this->divisionDbTable->select()->from("division")->where("id = ?", $id);
         $row = $this->divisionDbTable->fetchRow($query)->toArray();
 
@@ -118,4 +118,38 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
         }
         return $divisionArray;
     }
+
+
+    /**
+     * Encuentra las divisiones que están relacionadas a una disciplina
+     * @param int $id
+     * @return array Application_Model_Division
+     */
+    public function findDivisionsByDisciplineId($id)
+    {
+
+        $resultQuery = $this->divisionDbTable->select()->where("discipline_id=?", $id)->setIntegrityCheck(false);
+        $rows = $this->divisionDbTable->fetchAll($resultQuery)->toArray();
+
+
+        $divisions_array = array();
+        $objDivision = new Application_Model_Division();
+        $disciplineMapper = new Application_Model_Mapper_Discipline();
+
+        if ($rows != null) {
+            foreach ($rows as $row) {
+
+                $objDivision->createFromDbTable($row);
+
+
+                $discipline = $disciplineMapper->findOneBy($row["discipline_id"]);
+                $objDivision->setObjDiscipline($discipline);
+
+                array_push($divisions_array, $objDivision);
+            }
+            return $divisions_array;
+        }
+    }
+
+
 }

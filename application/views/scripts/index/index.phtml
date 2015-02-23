@@ -5,11 +5,31 @@
     <title>Prueba</title>
 </head>
 <body>
-<!--<h1>HOLA MUNDO</h1>-->
+
+<h3>-------------Empieza Division-----------</h3>
+<?php foreach ($this->divisionsOfADiscipline as $eachDivision):?>
+    <?php echo $this->escape("División ID:".$eachDivision->getId()); ?> <br/>
+    <?php echo $this->escape("Nombre :".$eachDivision->getName()); ?> <br/>
+    <?php echo $this->escape("ID Disciplina :".$eachDivision->getObjDiscipline()->getId()); ?> <br/>
+    <?php echo $this->escape("Nombre Disciplina:".$eachDivision->getObjDiscipline()->getName()); ?> <br/>
+
+<?php endforeach ?>
+
+<h3>-------------Termina Division-----------</h3>
+
+
+<h3>-------------Empieza Propiedades-----------</h3>
+<?php foreach ($this->propertiesOfAnAsset as $eachProperty):?>
+    <?php echo $this->escape("Propiedad ID:".$eachProperty->getId()); ?> <br/>
+    <?php echo $this->escape("Nombre :".$eachProperty->getName()); ?> <br/>
+    <?php echo $this->escape("Tipo :".$eachProperty->getType()); ?> <br/>
+    <?php echo $this->escape("Requerido? :".$eachProperty->isRequired()); ?> <br/>
+
+<?php endforeach ?>
+<h3>-------------Termina Propiedades-----------</h3>
 
 <?php foreach ($this->assets as $eachAsset):?>
     <h3>-------------Empieza un Asset-----------</h3>
-    <?php //echo $this->escape($this->disciplines->getName()); ?>
     <?php echo $this->escape("Activo ID:".$eachAsset->getId()); ?> <br/>
     <?php echo $this->escape("Nombre: ".$eachAsset->getName()); ?><br/>
     <br/>
@@ -34,6 +54,8 @@
     <?php endforeach ?>
     <h3>-------------Termina un Asset-----------</h3>
 <?php endforeach ?>
+
+
 
 
 </body>

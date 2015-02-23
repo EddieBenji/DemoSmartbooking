@@ -24,12 +24,12 @@ class Application_Model_Mapper_Discipline implements Application_Model_Mapper_Ab
 
     /**
      * Insert object
-     * @param unknown $obj
-     * @return unknown
+     * @param Application_Model_Discipline $obj
+     * @return Application_Model_Discipline
      */
     public function insert($obj)
     {
-        // TODO: Implement insert() method.
+        // TODO: Implement addAsset() method.
         $data = array("name"=>$obj->getName());
         $id = $this->disciplineDbTable->insert($data);
         $obj->setId($id);
@@ -38,9 +38,13 @@ class Application_Model_Mapper_Discipline implements Application_Model_Mapper_Ab
     }
 
 
+    /**
+     * @param Application_Model_Discipline $obj
+     * @return Application_Model_Discipline
+     */
     public function update($obj)
     {
-        // TODO: Implement update() method.
+        // TODO: Implement updateInformationOfDiscipline() method.
         $data = array("name"=>$obj->getName());
 
         $id = $this->disciplineDbTable->update($data, "id = ". $obj->getId());
@@ -51,18 +55,22 @@ class Application_Model_Mapper_Discipline implements Application_Model_Mapper_Ab
 
     /**
      * Delete object
-     * @param unknown $obj
+     * @param Application_Model_Discipline $obj
      */
     public function delete($obj)
     {
-        // TODO: Implement delete() method.
+        // TODO: Implement removeDiscipline() method.
         $this->disciplineDbTable->delete("id = ".$obj->getId());
     }
 
 
+    /**
+     * @param int $id
+     * @return Application_Model_Discipline
+     */
     public function findOneBy($id)
     {
-        // TODO: Implement findOneBy() method.
+        // TODO: Implement findDisciplineById() method.
 
         $resultQuery = $this->disciplineDbTable->select()->where("id=?",$id);
         $row = $this->disciplineDbTable->fetchRow($resultQuery)->toArray();

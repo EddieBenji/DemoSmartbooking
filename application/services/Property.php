@@ -43,5 +43,28 @@ class Application_Service_Property
         return $this->propertyMapper->findAll();
     }
 
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function findPropertiesOfAnAssetById($id)
+    {
+        $assetTypeMapper = new Application_Model_Mapper_AssetTypeHasProperty();
+        return $assetTypeMapper->findPropertiesOfAnAssetById($id);
+
+    }
+
+    /**
+     * @param Application_Model_Asset $obj
+     * @return Application_Model_Asset
+     */
+    public function findPropertiesOfAnAsset($obj)
+    {
+        $assetTypeMapper = new Application_Model_Mapper_AssetTypeHasProperty();
+        $obj->setArrayProperties($assetTypeMapper->findPropertiesOfAnAssetById($obj->getId()));
+        return $obj;
+
+    }
+
 
 }

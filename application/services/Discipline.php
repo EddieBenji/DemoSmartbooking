@@ -20,45 +20,58 @@ class Application_Service_Discipline
 
     /**
      * Insert object
-     * @param unknown $obj
-     * @return unknown
+     * @param Application_Model_Discipline $obj
+     * @return Application_Model_Discipline
      */
-    public function insert($obj)
+    public function addDiscipline($obj)
     {
-        // TODO: Implement insert() method.
+        // TODO: Implement addAsset() method.
         return $this->disciplineMapper->insert($obj);
     }
 
 
-    public function update($obj)
+    /**
+     * @param Application_Model_Discipline $obj
+     * @return Application_Model_Discipline
+     */
+    public function updateInformationOfDiscipline($obj)
     {
-        // TODO: Implement update() method.
+        // TODO: Implement updateInformationOfDiscipline() method.
         return $this->disciplineMapper->update($obj);
     }
 
     /**
      * Delete object
-     * @param unknown $obj
+     * @param Application_Model_Discipline $obj
      */
-    public function delete($obj)
+    public function removeDiscipline($obj)
     {
-        // TODO: Implement delete() method.
+        // TODO: Implement removeDiscipline() method.
         $this->disciplineMapper->delete($obj);
     }
 
 
-    public function findOneBy($id)
+    /**
+     * @param int $id
+     * @return Application_Model_Discipline
+     */
+    public function findDisciplineById($id)
     {
-        // TODO: Implement findOneBy() method.
+        // TODO: Implement findDisciplineById() method.
 
         return $this->disciplineMapper->findOneBy($id);
     }
 
 
-    public function findAll()
+    /**
+     *
+     * @return array Application_Model_Discipline
+     */
+    public function findAllDisciplines()
     {
         return $this->disciplineMapper->findAll();
     }
+
 
 
 }

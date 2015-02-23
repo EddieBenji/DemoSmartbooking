@@ -22,13 +22,13 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
 
     public function insert($obj)
     {
-        // TODO: Implement insert() method.
+        // TODO: Implement addAsset() method.
     }
 
 
     public function update($obj)
     {
-        // TODO: Implement update() method.
+        // TODO: Implement updateInformationOfDiscipline() method.
     }
 
     /**
@@ -37,13 +37,13 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
      */
     public function delete($obj)
     {
-        // TODO: Implement delete() method.
+        // TODO: Implement removeDiscipline() method.
     }
 
 
     public function findOneBy($id)
     {
-        // TODO: Implement findOneBy() method.
+        // TODO: Implement findDisciplineById() method.
 
     }
 
@@ -69,7 +69,6 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
                 array_push($propertiesOfAnAsset_array, $a_property);
             }
             return $propertiesOfAnAsset_array;
-
         }
     }
 

@@ -42,4 +42,23 @@ class Application_Service_Division
     }
 
 
+    /**
+     * @param int $id
+     * @return array Application_Model_Division
+     */
+    public function findDivisionsByDisciplineId($id)
+    {
+        return $this->divisionMapper->findDivisionsByDisciplineId($id);
+    }
+
+    /**
+     * @param Application_Model_Discipline $obj
+     * @return array Application_Model_Division
+     */
+    public function findDivisionsByDiscipline($obj){
+
+        return $this->divisionMapper->findDivisionsByDisciplineId($obj->getId());
+    }
+
+
 }

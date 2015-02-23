@@ -9,33 +9,44 @@ class IndexController extends Zend_Controller_Action
     }
 
 
+    /**
+     *
+     */
     public function indexAction()
     {
         // action body
-//        $serviceDiscipline = new Application_Service_Discipline();
-//        $this->view->disciplines = $serviceDiscipline->findAllAssets();
-//        $this->view->disciplines = $serviceDiscipline->findOneBy(1);
-//        $objToInsert = new Application_Model_Discipline();
-//        $objToInsert->setId(10);
-//        $objToInsert->setName("sierra");
-//        $serviceDiscipline->insert($objToInsert);
-//        $serviceDivision = new Application_Service_Division();
-//        $this->view->divisions = $serviceDivision->findAllAssets();
+        $divisionService = new Application_Service_Division();
 
-//        $serviceProperties = new Application_Service_Property();
-//        $this->view->properties=$serviceProperties->findAllAssets();
 
-//        $placeProperties = new Application_Service_Place();
-//        $this->view->places=$placeProperties->findAllAssets();
+        $this->view->divisionsOfADiscipline = $divisionService->findDivisionsByDisciplineId(1);
+//        $objDiscipline = new Application_Model_Discipline();
+//        $objDiscipline->setId(2);
+//        $objDiscipline->setName("prueba");
+//        $this->view->divisionsOfADiscipline = $divisionService->findDivisionsByDiscipline($objDiscipline);
+
 
         $assetService = new Application_Service_Asset();
-//        $this->view->assets = $assetService->findAnAssetById(1);
-        $this->view->assets = $assetService->findAllAssets();
+        $this->view->assets = $assetService->findAssetsByDivisionId(2);
+
+//        $division = new Application_Model_Division();
+//        $division->setId(3);
+//        $division->setName("Tuberias");
+
+//        $this->view->assets = $assetService->findAssetsByDivision($division);
 
 
+        $propertyService = new Application_Service_Property();
+//        $this->view->propertiesOfAnAsset = $propertyService->findPropertiesOfAnAssetById(2);
 
+        $asset = new Application_Model_Asset();
+        $asset->setName("HOLA");
+        $asset->setId(2);
+        $propertyService->findPropertiesOfAnAsset($asset);
+        $this->view->propertiesOfAnAsset = $asset->getArrayProperties() ;
 
     }
+
+
 
 
 }

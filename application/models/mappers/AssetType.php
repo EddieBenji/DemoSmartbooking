@@ -6,7 +6,7 @@
  * Date: 20/02/15
  * Time: 09:37 AM
  */
-class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstract
+class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abstract
 {
 
     private $assetDbTable;
@@ -23,7 +23,7 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
      */
     public function insert($obj)
     {
-        // TODO: Implement insert() method.
+        // TODO: Implement addAsset() method.
         $data = array(
             "name" => $obj->getName(),
             "division_id" => $obj->getObjDivision()->getId(),
@@ -43,7 +43,7 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
      */
     public function update($obj)
     {
-        // TODO: Implement update() method.
+        // TODO: Implement updateInformationOfDiscipline() method.
         $data = array(
             "name" => $obj->getName(),
             "division_id" => $obj->getObjDivision()->getId(),
@@ -62,7 +62,7 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
      */
     public function delete($obj)
     {
-        // TODO: Implement delete() method.
+        // TODO: Implement removeDiscipline() method.
         $this->assetDbTable->delete("id=" . $obj->getId());
     }
 
@@ -72,7 +72,7 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
      */
     public function findOneBy($id)
     {
-        // TODO: Implement findOneBy() method.
+        // TODO: Implement findDisciplineById() method.
         $resultQuery = $this->assetDbTable->select()->where("id=?", $id);
         $row = $this->assetDbTable->fetchRow($resultQuery)->toArray();
 
@@ -94,6 +94,46 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             return $objAsset;
         }
     }
+
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function findAssetsByDivisionId($id)
+    {
+        //SELECT * FROM `asset_type` WHERE `division_id` = 2
+        $resultQuery = $this->assetDbTable->select()->where("division_id=?", $id)->setIntegrityCheck(false);
+        $rows = $this->assetDbTable->fetchAll($resultQuery)->toArray();
+
+        $divisionMapper = new Application_Model_Mapper_Division();
+        $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
+        $assetsArray = array();
+
+        if ($resultQuery != null) {
+            foreach ($rows as $row) {
+                //ASSETS:
+                $objAsset = new Application_Model_Asset();
+                $objAsset->createFromDbTable($row);
+
+                //DIVISIONS:
+                $objDivision = $divisionMapper->findOneBy($row["division_id"]);
+                $objAsset->setObjDivision($objDivision);
+
+                //PROPERTIES:
+                $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+                $objAsset->setArrayProperties($arrayProps);
+                array_push($assetsArray, $objAsset);
+            }
+            return $assetsArray;
+        }else{
+            print("FUE NULO");
+            exit;
+        }
+
+
+    }
+
 
     /**
      * Find all elements
@@ -126,4 +166,6 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             return $assetsArray;
         }
     }
+
+
 }
