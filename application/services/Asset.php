@@ -22,8 +22,8 @@ class Application_Service_Asset
      * Función que llama al mapper de Asset, para agregar a la DB.
      * Regresa el mismo objeto, con el ID con el que se insertó en la DB.
      *
-     * @param Application_Model_Asset $obj
-     * @return Application_Model_Asset $obj
+     * @param Application_Model_AssetType $obj
+     * @return Application_Model_AssetType $obj
      */
     public function addAsset($obj)
     {
@@ -31,8 +31,8 @@ class Application_Service_Asset
     }
 
     /**
-     * @param Application_Model_Asset $obj
-     * @return Application_Model_Asset
+     * @param Application_Model_AssetType $obj
+     * @return Application_Model_AssetType
      */
     public function updateInformationOfAnAsset($obj)
     {
@@ -40,7 +40,7 @@ class Application_Service_Asset
     }
 
     /**
-     * @param Application_Model_Asset $obj
+     * @param Application_Model_AssetType $obj
      */
     public function removeAnAsset($obj){
         $this->assetMapper->delete($obj);
@@ -49,7 +49,7 @@ class Application_Service_Asset
 
     /**
      * @param $id
-     * @return Application_Model_Asset
+     * @return Application_Model_AssetType
      */
     public function findAnAssetById($id)
     {
@@ -57,7 +57,7 @@ class Application_Service_Asset
     }
 
     /**
-     * @return array Application_Model_Asset
+     * @return array Application_Model_AssetType
      */
     public function findAllAssets()
     {
@@ -66,7 +66,7 @@ class Application_Service_Asset
 
     /**
      * @param int $id
-     * @return array Application_Model_Asset
+     * @return array Application_Model_AssetType
      */
     public function findAssetsByDivisionId($id){
         return $this->assetMapper->findAssetsByDivisionId($id);

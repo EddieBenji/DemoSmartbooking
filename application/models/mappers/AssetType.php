@@ -9,17 +9,17 @@
 class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abstract
 {
 
-    private $assetDbTable;
+    private $assetTypeDbTable;
 
     public function __construct()
     {
-        $this->assetDbTable = new Application_Model_DbTable_Asset();
+        $this->assetTypeDbTable = new Application_Model_DbTable_AssetType();
     }
 
 
     /**
-     * @param Application_Model_Asset $obj
-     * @return Application_Model_Asset
+     * @param Application_Model_AssetType $obj
+     * @return Application_Model_AssetType
      */
     public function insert($obj)
     {
@@ -30,7 +30,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
             "division_discipline_id" => $obj->getObjDivision()->getObjDiscipline()->getId(),
         );
 
-        $id = $this->assetDbTable->insert($data);
+        $id = $this->assetTypeDbTable->insert($data);
         $obj->setId($id);
 
         return $obj;
@@ -38,8 +38,8 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
 
 
     /**
-     * @param Application_Model_Asset $obj
-     * @return Application_Model_Asset
+     * @param Application_Model_AssetType $obj
+     * @return Application_Model_AssetType
      */
     public function update($obj)
     {
@@ -50,7 +50,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
             "division_discipline_id" => $obj->getObjDivision()->getObjDiscipline()->getId(),
         );
 
-        $id = $this->assetDbTable->update($data, "id = " . $obj->getId());
+        $id = $this->assetTypeDbTable->update($data, "id = " . $obj->getId());
         $obj->setId($id);
 
         return $obj;
@@ -58,26 +58,26 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
 
     /**
      * Delete object
-     * @param Application_Model_Asset $obj
+     * @param Application_Model_AssetType $obj
      */
     public function delete($obj)
     {
         // TODO: Implement removeDiscipline() method.
-        $this->assetDbTable->delete("id=" . $obj->getId());
+        $this->assetTypeDbTable->delete("id=" . $obj->getId());
     }
 
     /**
      * @param int $id
-     * @return Application_Model_Asset
+     * @return Application_Model_AssetType
      */
     public function findOneBy($id)
     {
         // TODO: Implement findDisciplineById() method.
-        $resultQuery = $this->assetDbTable->select()->where("id=?", $id);
-        $row = $this->assetDbTable->fetchRow($resultQuery)->toArray();
+        $resultQuery = $this->assetTypeDbTable->select()->where("id=?", $id);
+        $row = $this->assetTypeDbTable->fetchRow($resultQuery)->toArray();
 
         if ($row != null) {
-            $objAsset = new Application_Model_Asset();
+            $objAsset = new Application_Model_AssetType();
             $objAsset->createFromDbTable($row);
             //faltan los objetos de division y property
 
@@ -103,8 +103,8 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
     public function findAssetsByDivisionId($id)
     {
         //SELECT * FROM `asset_type` WHERE `division_id` = 2
-        $resultQuery = $this->assetDbTable->select()->where("division_id=?", $id)->setIntegrityCheck(false);
-        $rows = $this->assetDbTable->fetchAll($resultQuery)->toArray();
+        $resultQuery = $this->assetTypeDbTable->select()->where("division_id=?", $id)->setIntegrityCheck(false);
+        $rows = $this->assetTypeDbTable->fetchAll($resultQuery)->toArray();
 
         $divisionMapper = new Application_Model_Mapper_Division();
         $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
@@ -113,7 +113,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
         if ($resultQuery != null) {
             foreach ($rows as $row) {
                 //ASSETS:
-                $objAsset = new Application_Model_Asset();
+                $objAsset = new Application_Model_AssetType();
                 $objAsset->createFromDbTable($row);
 
                 //DIVISIONS:
@@ -137,13 +137,13 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
 
     /**
      * Find all elements
-     * @return array Application_Model_Asset
+     * @return array Application_Model_AssetType
      */
     public function findAll()
     {
         // TODO: Implement findAllAssets() method.
         $assetsArray = array();
-        $result = $this->assetDbTable->fetchAll()->toArray();
+        $result = $this->assetTypeDbTable->fetchAll()->toArray();
 
         $divisionMapper = new Application_Model_Mapper_Division();
         $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
@@ -151,7 +151,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
         if ($result != null) {
             foreach ($result as $row) {
                 //ASSETS:
-                $objAsset = new Application_Model_Asset();
+                $objAsset = new Application_Model_AssetType();
                 $objAsset->createFromDbTable($row);
 
                 //DIVISIONS:

@@ -2,17 +2,21 @@
 
 /**
  * Created by PhpStorm.
- * User: benji
- * Date: 20/02/15
- * Time: 09:21 AM
+ * User: Lalo
+ * Date: 24/02/2015
+ * Time: 09:13 AM
  */
 class Application_Model_Asset extends Application_Model_Abstract
 {
 
+    /**
+     * @var int
+     */
     private $id;
-    private $name;
-    private $objDivision;
-    private $arrayProperties;
+    /**
+     * @var Application_Model_AssetType
+     */
+    private $objAssetType;
 
     /**
      * @param int $id
@@ -23,28 +27,11 @@ class Application_Model_Asset extends Application_Model_Abstract
     }
 
     /**
-     * @param String $name
+     * @param Application_Model_AssetType $objAssetType
      */
-    public function setName($name)
+    public function setObjAssetType($objAssetType)
     {
-        $this->name = $name;
-    }
-
-    /**
-     * @param Application_Model_Division $objDivision
-     */
-    public function setObjDivision($objDivision)
-    {
-        $this->objDivision = $objDivision;
-    }
-
-
-    /**
-     * @param array $arrayProperties
-     */
-    public function setArrayProperties($arrayProperties)
-    {
-        $this->arrayProperties = $arrayProperties;
+        $this->objAssetType = $objAssetType;
     }
 
     /**
@@ -56,28 +43,13 @@ class Application_Model_Asset extends Application_Model_Abstract
     }
 
     /**
-     * @return String
+     * @return Application_Model_AssetType
      */
-    public function getName()
+    public function getObjAssetType()
     {
-        return $this->name;
-    }
-
-    /**
-     * @return Application_Model_Division
-     */
-    public function getObjDivision()
-    {
-        return $this->objDivision;
+        return $this->objAssetType;
     }
 
 
-    /**
-     * @return array
-     */
-    public function getArrayProperties()
-    {
-        return $this->arrayProperties;
-    }
 
 }

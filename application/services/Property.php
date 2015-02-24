@@ -55,8 +55,8 @@ class Application_Service_Property
     }
 
     /**
-     * @param Application_Model_Asset $obj
-     * @return Application_Model_Asset
+     * @param Application_Model_AssetType $obj
+     * @return Application_Model_AssetType
      */
     public function findPropertiesOfAnAsset($obj)
     {

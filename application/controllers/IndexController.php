@@ -38,7 +38,7 @@ class IndexController extends Zend_Controller_Action
         $propertyService = new Application_Service_Property();
 //        $this->view->propertiesOfAnAsset = $propertyService->findPropertiesOfAnAssetById(2);
 
-        $asset = new Application_Model_Asset();
+        $asset = new Application_Model_AssetType();
         $asset->setName("HOLA");
         $asset->setId(2);
         $propertyService->findPropertiesOfAnAsset($asset);
