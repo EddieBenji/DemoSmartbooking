@@ -19,6 +19,7 @@ class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abs
         $this->propertiesDbTable = new Application_Model_DbTable_Property();
     }
 
+
     /**
      * Insert object
      * @param unknown $obj
@@ -54,6 +55,10 @@ class Application_Model_Mapper_Property  implements Application_Model_Mapper_Abs
         $this->propertiesDbTable->delete("id = ".$obj->getId());
     }
 
+    /**
+     * @param int $id
+     * @return Application_Model_Property
+     */
     public function findOneBy($id)
     {
         // TODO: Implement findDisciplineById() method.

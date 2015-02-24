@@ -79,6 +79,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
         if ($row != null) {
             $objAsset = new Application_Model_AssetType();
             $objAsset->createFromDbTable($row);
+
             //faltan los objetos de division y property
 
             $divisionMapper = new Application_Model_Mapper_Division();
@@ -88,7 +89,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
             //PROPIEDADES:
             $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
 
-            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+            $arrayProps = $propertiesMapper->findPropertiesOfAnAssetTypeById($objAsset->getId());
             $objAsset->setArrayProperties($arrayProps);
 
             return $objAsset;
@@ -121,7 +122,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
                 $objAsset->setObjDivision($objDivision);
 
                 //PROPERTIES:
-                $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+                $arrayProps = $propertiesMapper->findPropertiesOfAnAssetTypeById($objAsset->getId());
                 $objAsset->setArrayProperties($arrayProps);
                 array_push($assetsArray, $objAsset);
             }
@@ -142,7 +143,7 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
     public function findAll()
     {
         // TODO: Implement findAllAssets() method.
-        $assetsArray = array();
+        $assetsTypeArray = array();
         $result = $this->assetTypeDbTable->fetchAll()->toArray();
 
         $divisionMapper = new Application_Model_Mapper_Division();
@@ -159,11 +160,11 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
                 $objAsset->setObjDivision($objDivision);
 
                 //PROPERTIES:
-                $arrayProps = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+                $arrayProps = $propertiesMapper->findPropertiesOfAnAssetTypeById($objAsset->getId());
                 $objAsset->setArrayProperties($arrayProps);
-                array_push($assetsArray, $objAsset);
+                array_push($assetsTypeArray, $objAsset);
             }
-            return $assetsArray;
+            return $assetsTypeArray;
         }
     }
 

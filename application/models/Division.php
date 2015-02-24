@@ -12,6 +12,7 @@ class Application_Model_Division extends Application_Model_Abstract{
     private $id;
     private $name;
 
+
     /**
      * @param mixed $objDiscipline
      */

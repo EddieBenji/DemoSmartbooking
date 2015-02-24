@@ -18,6 +18,7 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
     {
         // TODO: Implement __construct() method.
         $this->assetTypeHasPropertyDbTable = new Application_Model_DbTable_AssetTypeHasProperty();
+
     }
 
     public function insert($obj)
@@ -52,16 +53,14 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
      * @param int $id
      * @return array
      */
-    public function findPropertiesOfAnAssetById($id)
+    public function findPropertiesOfAnAssetTypeById($id)
     {
-
         $resultQuery = $this->assetTypeHasPropertyDbTable->select()->where("asset_type_id=?", $id)->setIntegrityCheck(false);
         $rows = $this->assetTypeHasPropertyDbTable->fetchAll($resultQuery)->toArray();
         $propertiesOfAnAsset_array = array();
 
         $propertiesMapper = new Application_Model_Mapper_Property();
         if ($rows != null) {
-
             foreach ($rows as $row) {
 
                 $a_property = $propertiesMapper->findOneBy($row["property_id"]);

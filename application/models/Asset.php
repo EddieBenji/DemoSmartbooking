@@ -13,10 +13,21 @@ class Application_Model_Asset extends Application_Model_Abstract
      * @var int
      */
     private $id;
+
     /**
      * @var Application_Model_AssetType
      */
     private $objAssetType;
+
+    /**
+     * @var array
+     */
+    private $arrayProperties;
+
+    /**
+     * @var String
+     */
+    private $data;
 
     /**
      * @param int $id
@@ -35,6 +46,22 @@ class Application_Model_Asset extends Application_Model_Abstract
     }
 
     /**
+     * @param array $arrayProperties
+     */
+    public function setArrayProperties($arrayProperties)
+    {
+        $this->arrayProperties = $arrayProperties;
+    }
+
+    /**
+     * @param String $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -50,6 +77,19 @@ class Application_Model_Asset extends Application_Model_Abstract
         return $this->objAssetType;
     }
 
+    /**
+     * @return array
+     */
+    public function getArrayProperties()
+    {
+        return $this->arrayProperties;
+    }
 
-
+    /**
+     * @return String
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 }

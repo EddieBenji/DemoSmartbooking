@@ -8,7 +8,6 @@
  */
 class Application_Model_AssetType extends Application_Model_Abstract
 {
-
     private $id;
     private $name;
     private $objDivision;

@@ -50,7 +50,7 @@ class Application_Service_Property
     public function findPropertiesOfAnAssetById($id)
     {
         $assetTypeMapper = new Application_Model_Mapper_AssetTypeHasProperty();
-        return $assetTypeMapper->findPropertiesOfAnAssetById($id);
+        return $assetTypeMapper->findPropertiesOfAnAssetTypeById($id);
 
     }
 
@@ -61,7 +61,7 @@ class Application_Service_Property
     public function findPropertiesOfAnAsset($obj)
     {
         $assetTypeMapper = new Application_Model_Mapper_AssetTypeHasProperty();
-        $obj->setArrayProperties($assetTypeMapper->findPropertiesOfAnAssetById($obj->getId()));
+        $obj->setArrayProperties($assetTypeMapper->findPropertiesOfAnAssetTypeById($obj->getId()));
         return $obj;
 
     }

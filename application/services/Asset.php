@@ -1,83 +1,27 @@
 <?php
-
 /**
  * Created by PhpStorm.
- * User: benji
- * Date: 20/02/15
- * Time: 10:29 AM
+ * User: equipo1
+ * Date: 24/02/2015
+ * Time: 09:40 AM
  */
-class Application_Service_Asset
-{
 
+class Application_Service_Asset {
 
-    private $assetMapper;
+    private $assetMapper ;
 
-    public function __construct()
+    function __construct()
     {
-        $this->assetMapper = new Application_Model_Mapper_AssetType();
-    }
-
-
-    /**
-     * Función que llama al mapper de Asset, para agregar a la DB.
-     * Regresa el mismo objeto, con el ID con el que se insertó en la DB.
-     *
-     * @param Application_Model_AssetType $obj
-     * @return Application_Model_AssetType $obj
-     */
-    public function addAsset($obj)
-    {
-        return $this->assetMapper->insert($obj);
-    }
-
-    /**
-     * @param Application_Model_AssetType $obj
-     * @return Application_Model_AssetType
-     */
-    public function updateInformationOfAnAsset($obj)
-    {
-        return $this->assetMapper->update($obj);
-    }
-
-    /**
-     * @param Application_Model_AssetType $obj
-     */
-    public function removeAnAsset($obj){
-        $this->assetMapper->delete($obj);
-    }
-
-
-    /**
-     * @param $id
-     * @return Application_Model_AssetType
-     */
-    public function findAnAssetById($id)
-    {
-        return $this->assetMapper->findOneBy($id);
-    }
-
-    /**
-     * @return array Application_Model_AssetType
-     */
-    public function findAllAssets()
-    {
-        return $this->assetMapper->findAll();
+        $this->assetMapper = new Application_Model_Mapper_Asset();
     }
 
     /**
      * @param int $id
-     * @return array Application_Model_AssetType
+     * @return Application_Model_Asset
      */
-    public function findAssetsByDivisionId($id){
-        return $this->assetMapper->findAssetsByDivisionId($id);
+    public function findAssetById($id){
+        return  $this->assetMapper->findOneBy($id);
     }
 
-    /**
-     * @param Application_Model_Division $obj
-     * @return array
-     */
-    public function findAssetsByDivision($obj){
-        return $this->assetMapper->findAssetsByDivisionId($obj->getId());
 
-    }
 }

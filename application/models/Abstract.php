@@ -8,6 +8,7 @@
  */
 class Application_Model_Abstract
 {
+    
 
     /**
      * Set data of the object by DbTable

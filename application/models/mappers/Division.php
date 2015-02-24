@@ -9,6 +9,7 @@
 class Application_Model_Mapper_Division implements Application_Model_Mapper_Abstract
 {
 
+
     private $divisionDbTable;
 
 

@@ -9,11 +9,11 @@
 class Application_Model_Property extends Application_Model_Abstract
 {
 
-
     private $id;
     private $name;
     private $type;
     private $required;
+    private $data;
 
     /**
      * @param mixed $id
@@ -48,6 +48,15 @@ class Application_Model_Property extends Application_Model_Abstract
     }
 
     /**
+     * @param String $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -78,6 +87,15 @@ class Application_Model_Property extends Application_Model_Abstract
     {
         return $this->required;
     }
+
+    /**
+     * @return String
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
 
 
 }
