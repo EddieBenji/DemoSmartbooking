@@ -62,7 +62,6 @@ class Application_Model_Mapper_AssetTypeHasProperty implements Application_Model
         $propertiesMapper = new Application_Model_Mapper_Property();
         if ($rows != null) {
             foreach ($rows as $row) {
-
                 $a_property = $propertiesMapper->findOneBy($row["property_id"]);
                 $a_property->setRequired($row["required"]);
                 array_push($propertiesOfAnAsset_array, $a_property);

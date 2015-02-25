@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<?php //echo $this->escape("Asset ID:".$this->assets->getId()); ?>
-<!--<br/>-->
-<?php //echo $this->escape("AssetType ID:".print_r($this->assets->getObjAssetType()))?>
+<?php echo $this->escape("Asset ID:".$this->assets->getId()); ?>
+<br/>
+<?php echo $this->escape("AssetType ID:".print_r($this->assets->getObjAssetType()->getId()))?>
 
 
 <?php //foreach ($this->assets as $eachAsset): ?>
@@ -28,15 +28,16 @@
 <!--<h3>-------------Termina Division-----------</h3>-->
 <!---->
 <!---->
-<!--<h3>-------------Empieza Propiedades-----------</h3>-->
-<?php //foreach ($this->propertiesOfAnAsset as $eachProperty):?>
-<!--    --><?php //echo $this->escape("Propiedad ID:".$eachProperty->getId()); ?><!-- <br/>-->
-<!--    --><?php //echo $this->escape("Nombre :".$eachProperty->getName()); ?><!-- <br/>-->
-<!--    --><?php //echo $this->escape("Tipo :".$eachProperty->getType()); ?><!-- <br/>-->
-<!--    --><?php //echo $this->escape("Requerido? :".$eachProperty->isRequired()); ?><!-- <br/>-->
-<!---->
-<?php //endforeach ?>
-<!--<h3>-------------Termina Propiedades-----------</h3>-->
+<h3>-------------Empieza Propiedades-----------</h3>
+<?php foreach ($this->assets->getArrayProperties() as $eachProperty):?>
+    <?php echo $this->escape("Propiedad ID:".$eachProperty->getId()); ?> <br/>
+    <?php echo $this->escape("Nombre :".$eachProperty->getName()); ?> <br/>
+    <?php echo $this->escape("Tipo :".$eachProperty->getType()); ?> <br/>
+    <?php echo $this->escape("Requerido? :".$eachProperty->isRequired()); ?> <br/>
+    <?php echo $this->escape("Data :".$eachProperty->getData()); ?> <br/>
+
+<?php endforeach ?>
+<h3>-------------Termina Propiedades-----------</h3>
 <!---->
 <?php //foreach ($this->assets as $eachAsset):?>
 <!--    <h3>-------------Empieza un Asset-----------</h3>-->

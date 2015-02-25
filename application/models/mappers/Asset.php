@@ -62,10 +62,13 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             $objAsset->createFromDbTable($row);
 
             $assetTypeMapper = new Application_Model_Mapper_AssetType();
-            $objAsset->setObjAssetType($assetTypeMapper->findOneBy($row["asset_type_id"]));
+            $asset_type = $assetTypeMapper->findOneBy($row["asset_type_id"]);
+            $objAsset->setObjAssetType($asset_type);
 
-            //FALTAN SETEAR LAS PROPIEDADES QUE EL USUARIO PUSO EN VISTA
-
+            //Propiedades:
+            $propertiesMapper = new Application_Model_Mapper_AssetHasProperty();
+            $properties_array = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
+            $objAsset->setArrayProperties($properties_array);
 
             return $objAsset;
         }

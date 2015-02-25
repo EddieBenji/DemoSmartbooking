@@ -18,7 +18,7 @@ class Application_Model_Mapper_AssetHasProperty implements Application_Model_Map
     public function __construct()
     {
         // TODO: Implement __construct() method.
-        $this->assetHasPropertyMapper = new Application_Model_Mapper_AssetHasProperty();
+        $this->assetHasPropertyMapper = new Application_Model_DbTable_AssetHasProperty();
     }
 
 
@@ -55,6 +55,7 @@ class Application_Model_Mapper_AssetHasProperty implements Application_Model_Map
 
     public function findPropertiesOfAnAssetById($id){
         $resultQuery = $this->assetHasPropertyMapper->select()->where("asset_id=?", $id)->setIntegrityCheck(false);
+
         $rows = $this->assetHasPropertyMapper->fetchAll($resultQuery)->toArray();
         $propertiesOfAnAsset_array = array();
 
@@ -66,9 +67,9 @@ class Application_Model_Mapper_AssetHasProperty implements Application_Model_Map
                 $a_property->setData($row["data"]);
                 array_push($propertiesOfAnAsset_array, $a_property);
             }
+
             return $propertiesOfAnAsset_array;
         }
-
     }
 
 

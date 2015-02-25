@@ -104,18 +104,18 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
     {
         // TODO: Implement findAllAssets() method.
         $divisionArray = array();
-        $result = $this->divisionDbTable->fetchAll()->toArray();
+        $rows = $this->divisionDbTable->fetchAll()->toArray();
 
         $disciplineMapper = new Application_Model_Mapper_Discipline();
-        foreach ($result as $row) {
+        foreach ($rows as $row) {
 
-            $division = new Application_Model_Division();
-            $division->createFromDbTable($row);
+            $a_division = new Application_Model_Division();
+            $a_division->createFromDbTable($row);
 
             $theDiscipline = $disciplineMapper->findOneBy($row["discipline_id"]);
-            $division->setObjDiscipline($theDiscipline);
+            $a_division->setObjDiscipline($theDiscipline);
 
-            array_push($divisionArray, $division);
+            array_push($divisionArray, $a_division);
         }
         return $divisionArray;
     }
@@ -139,9 +139,7 @@ class Application_Model_Mapper_Division implements Application_Model_Mapper_Abst
 
         if ($rows != null) {
             foreach ($rows as $row) {
-
                 $objDivision->createFromDbTable($row);
-
 
                 $discipline = $disciplineMapper->findOneBy($row["discipline_id"]);
                 $objDivision->setObjDiscipline($discipline);
