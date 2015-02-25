@@ -13,7 +13,6 @@ class Application_Model_Property extends Application_Model_Abstract
     private $name;
     private $type;
     private $required;
-    private $data;
 
     /**
      * @param mixed $id
@@ -45,14 +44,6 @@ class Application_Model_Property extends Application_Model_Abstract
     public function setRequired($required)
     {
         $this->required = $required;
-    }
-
-    /**
-     * @param String $data
-     */
-    public function setData($data)
-    {
-        $this->data = $data;
     }
 
 
@@ -87,15 +78,4 @@ class Application_Model_Property extends Application_Model_Abstract
     {
         return $this->required;
     }
-
-    /**
-     * @return String
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-
-
 }

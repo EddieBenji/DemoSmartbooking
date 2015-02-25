@@ -22,12 +22,7 @@ class Application_Model_Asset extends Application_Model_Abstract
     /**
      * @var array
      */
-    private $arrayProperties;
-
-    /**
-     * @var String
-     */
-    private $data;
+    private $arrayAnswers;
 
     /**
      * @param int $id
@@ -45,21 +40,15 @@ class Application_Model_Asset extends Application_Model_Abstract
         $this->objAssetType = $objAssetType;
     }
 
-    /**
-     * @param array $arrayProperties
-     */
-    public function setArrayProperties($arrayProperties)
-    {
-        $this->arrayProperties = $arrayProperties;
-    }
 
     /**
-     * @param String $data
+     * @param array $arrayAnswers
      */
-    public function setData($data)
+    public function setArrayAnswers($arrayAnswers)
     {
-        $this->data = $data;
+        $this->arrayAnswers = $arrayAnswers;
     }
+
 
     /**
      * @return int
@@ -77,19 +66,14 @@ class Application_Model_Asset extends Application_Model_Abstract
         return $this->objAssetType;
     }
 
+
     /**
      * @return array
      */
-    public function getArrayProperties()
+    public function getArrayAnswers()
     {
-        return $this->arrayProperties;
+        return $this->arrayAnswers;
     }
 
-    /**
-     * @return String
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
+
 }

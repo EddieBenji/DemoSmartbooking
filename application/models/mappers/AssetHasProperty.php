@@ -72,5 +72,32 @@ class Application_Model_Mapper_AssetHasProperty implements Application_Model_Map
         }
     }
 
+    public function findAnswersOfAnAssetById($id){
+        //esta tabla en la BD, tiene:
+        //asset_id, property_id, data
+
+        $resultQuery = $this->assetHasPropertyMapper->select()->where("asset_id=?", $id)->setIntegrityCheck(false);
+
+        $rows = $this->assetHasPropertyMapper->fetchAll($resultQuery)->toArray();
+        $answersOfAnAsset_array = array();
+
+        $propertiesMapper = new Application_Model_Mapper_Property();
+        $a_answer = new Application_Model_Answer();
+        if ($rows != null) {
+            foreach ($rows as $row) {
+
+                $a_property = $propertiesMapper->findOneBy($row["property_id"]);
+                //$a_property->setData($row["data"]);
+                $a_answer->setObjProperty($a_property);
+                $a_answer->setData($row["data"]);
+
+                array_push($answersOfAnAsset_array, $a_answer);
+            }
+
+            return $answersOfAnAsset_array;
+        }
+
+    }
+
 
 }

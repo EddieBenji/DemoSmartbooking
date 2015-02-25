@@ -29,12 +29,16 @@
 <!---->
 <!---->
 <h3>-------------Empieza Propiedades-----------</h3>
-<?php foreach ($this->assets->getArrayProperties() as $eachProperty):?>
-    <?php echo $this->escape("Propiedad ID:".$eachProperty->getId()); ?> <br/>
-    <?php echo $this->escape("Nombre :".$eachProperty->getName()); ?> <br/>
-    <?php echo $this->escape("Tipo :".$eachProperty->getType()); ?> <br/>
-    <?php echo $this->escape("Requerido? :".$eachProperty->isRequired()); ?> <br/>
-    <?php echo $this->escape("Data :".$eachProperty->getData()); ?> <br/>
+<?php foreach ($this->assets->getArrayAnswers() as $eachAnswer):?>
+    <?php echo $this->escape("Data:".$eachAnswer->getData()); ?> <br/>
+    <?php echo $this->escape("ID :".$eachAnswer->getObjProperty()->getId()); ?> <br/>
+    <?php echo $this->escape("Nombre :".$eachAnswer->getObjProperty()->getName()); ?> <br/>
+    <?php echo $this->escape("Tipo :".$eachAnswer->getObjProperty()->getType()); ?> <br/>
+
+<!--    --><?php //echo $this->escape("Nombre :".$eachAnswer->getName()); ?><!-- <br/>-->
+<!--    --><?php //echo $this->escape("Tipo :".$eachAnswer->getType()); ?><!-- <br/>-->
+<!--    --><?php //echo $this->escape("Requerido? :".$eachAnswer->isRequired()); ?><!-- <br/>-->
+<!--    --><?php //echo $this->escape("Data :".$eachAnswer->getData()); ?><!-- <br/>-->
 
 <?php endforeach ?>
 <h3>-------------Termina Propiedades-----------</h3>

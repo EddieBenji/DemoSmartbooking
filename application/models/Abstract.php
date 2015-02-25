@@ -18,8 +18,8 @@ class Application_Model_Abstract
     {
         $methods = get_class_methods($this);
 
-        foreach ($values as $atributo => $value) {
-            $method = 'set' . $this->changeNameField($atributo);
+        foreach ($values as $atribute => $value) {
+            $method = 'set' . $this->changeNameField($atribute);
             if (in_array($method, $methods)) {
                 $this->$method($value);
             }

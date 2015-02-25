@@ -65,10 +65,11 @@ class Application_Model_Mapper_Asset implements Application_Model_Mapper_Abstrac
             $asset_type = $assetTypeMapper->findOneBy($row["asset_type_id"]);
             $objAsset->setObjAssetType($asset_type);
 
-            //Propiedades:
-            $propertiesMapper = new Application_Model_Mapper_AssetHasProperty();
-            $properties_array = $propertiesMapper->findPropertiesOfAnAssetById($objAsset->getId());
-            $objAsset->setArrayProperties($properties_array);
+            // ANSWERS.
+            $answersMapper = new Application_Model_Mapper_AssetHasProperty();
+            $answers_array = $answersMapper->findAnswersOfAnAssetById($objAsset->getId());
+            $objAsset->setArrayAnswers($answers_array);
+
 
             return $objAsset;
         }

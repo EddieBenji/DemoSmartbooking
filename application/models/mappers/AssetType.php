@@ -80,14 +80,13 @@ class Application_Model_Mapper_AssetType implements Application_Model_Mapper_Abs
             $objAsset = new Application_Model_AssetType();
             $objAsset->createFromDbTable($row);
 
-            //faltan los objetos de division y property
+            //Division:
             $divisionMapper = new Application_Model_Mapper_Division();
             $objDivision = $divisionMapper->findOneBy($row["division_id"]);
             $objAsset->setObjDivision($objDivision);
 
-            //PROPIEDADES:
+            //PROPERTIES
             $propertiesMapper = new Application_Model_Mapper_AssetTypeHasProperty();
-
             $properties_array = $propertiesMapper->findPropertiesOfAnAssetTypeById($objAsset->getId());
             $objAsset->setArrayProperties($properties_array);
 
